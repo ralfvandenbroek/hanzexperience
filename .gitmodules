@@ -1,0 +1,9 @@
+[submodule "blockly"]
+	path = blockly
+	url = https://github.com/google/blockly.git
+[submodule "closure-library"]
+	path = closure-library
+	url = https://github.com/google/closure-library
+[submodule "interpreter"]
+	path = interpreter
+	url = https://github.com/NeilFraser/JS-Interpreter.git
