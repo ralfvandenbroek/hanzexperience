@@ -2,9 +2,9 @@
 root=$(dirname $(dirname $0))
 mkdir -p "$root/generated"
 mkdir -p "$root/appengine/generated"
-java -jar "$root/closure-templates/SoyMsgExtractor.jar" --outputFile "$root/generated/extracted_msgs.xlf" --srcs "$root/blockly-games/common.soy" --srcs "$root/blockly-games/maze.soy"
-"$root/blockly-games/xliff_to_json.py" --xlf "$root/generated/extracted_msgs.xlf" --output_dir "$root/generated" --templates "$root/blockly-games/common.soy" "$root/blockly-games/maze.soy"
-"$root/blockly-games/json-to-js.py" --path_to_jar "$root/closure-templates" --output_dir "$root/generated" --template "$root/blockly-games/maze.soy" \
+java -jar "$root/closure-templates/SoyMsgExtractor.jar" --outputFile "$root/generated/extracted_msgs.xlf" --srcs "$root/blockly-games/common.soy,$root/blockly-games/maze.soy"
+"$root/blockly-games/xliff_to_json.py" --xlf "$root/generated/extracted_msgs.xlf" --output_dir "$root/generated" --templates "$root/blockly-games/common.soy,$root/blockly-games/maze.soy"
+"$root/blockly-games/json-to-js.py" --path_to_jar "$root/closure-templates" --output_dir "$root/generated" --template "$root/blockly-games/common.soy,$root/blockly-games/maze.soy" \
     --key_file "$root/generated/keys.json" "$root/blockly-games/nl.json"
 java -jar "$root/closure-templates/SoyToJsSrcCompiler.jar" --shouldProvideRequireSoyNamespaces --outputPathFormat $root/generated/common-soy.js --srcs $root/blockly-games/common.soy
 java -jar "$root/closure-templates/SoyToJsSrcCompiler.jar" --shouldProvideRequireSoyNamespaces --outputPathFormat $root/generated/maze-soy.js --srcs $root/blockly-games/maze.soy

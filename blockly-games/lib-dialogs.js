@@ -364,36 +364,6 @@ BlocklyDialogs.congratulations = function() {
         top: '3em'
     };
 
-    // Add the user's code.
-    if (BlocklyGames.workspace) {
-        var linesText = document.getElementById('dialogLinesText');
-        linesText.textContent = '';
-        // Line produces warning when compiling Puzzle since there is no JavaScript
-        // generator.  But this function is never called in Puzzle, so no matter.
-        var code = Blockly.JavaScript.workspaceToCode(BlocklyGames.workspace);
-        code = BlocklyInterface.stripCode(code);
-        var noComments = code.replace(/\/\/[^\n]*/g, '');  // Inline comments.
-        noComments = noComments.replace(/\/\*.*\*\//g, '');  /* Block comments. */
-        noComments = noComments.replace(/[ \t]+\n/g, '\n');  // Trailing spaces.
-        noComments = noComments.replace(/\n+/g, '\n');  // Blank lines.
-        noComments = noComments.trim();
-        var lineCount = noComments.split('\n').length;
-        var pre = document.getElementById('containerCode');
-        pre.textContent = code;
-        if (typeof prettyPrintOne == 'function') {
-            code = pre.innerHTML;
-            code = prettyPrintOne(code, 'js');
-            pre.innerHTML = code;
-        }
-        if (lineCount == 1) {
-            var text = BlocklyGames.getMsg('Games_linesOfCode1');
-        } else {
-            var text = BlocklyGames.getMsg('Games_linesOfCode2')
-                .replace('%1', String(lineCount));
-        }
-        linesText.appendChild(document.createTextNode(text));
-    }
-
     if (BlocklyGames.LEVEL < BlocklyGames.MAX_LEVEL) {
         var text = BlocklyGames.getMsg('Games_nextLevel')
             .replace('%1', String(BlocklyGames.LEVEL + 1));

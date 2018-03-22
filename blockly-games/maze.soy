@@ -57,21 +57,9 @@
             {param level: $ij.level /}
             {param maxLevel: $ij.maxLevel /}
             {param lang: $ij.lang /}
-            {param suffix}&skin={$ij.skin}{/param}
+            {param suffix}{/param}
           {/call}
         </h1>
-      </td>
-      <td class="farSide">
-        <select id="languageMenu"></select>
-        &nbsp;
-        <button id="linkButton" title="{msg meaning="Games.linkTooltip" desc="IBID"}Save and link to blocks.{/msg}">
-          <img src="common/1x1.gif" class="link icon21">
-        </button>
-        &nbsp;
-        <button id="pegmanButton">
-          <img src="common/1x1.gif">
-          <span id="pegmanButtonArrow"></span>
-        </button>
       </td>
     </tr>
   </table>
@@ -114,23 +102,23 @@
   {call BlocklyGames.soy.storageDialog /}
 
   {if $ij.level == 1}
-    <div id="dialogHelpStack" class="dialogHiddenContent">
-      <table><tr><td>
-        <img src="common/help.png">
-      </td><td>&nbsp;</td><td>
-        {msg meaning="Maze.helpStack" desc="callout - The word words for 'stack' and 'blocks' should be the same as for stacking children's blocks. Use the imperative verb form appropriate for speaking to a child, gender unspecified.  If no gender-neutral singular/familiar form exists but a gender-neutral plural/formal form exists, use that instead.  Be sure to use the same translation of 'move forward' as above."}Stack a couple of 'move forward' blocks together to help me reach the goal.{/msg}
-      </td><td valign="top">
-        <img src="maze/help_stack.png" class="mirrorImg" height=63 width=136>
-      </td></tr></table>
-    </div>
-    <div id="dialogHelpOneTopBlock" class="dialogHiddenContent">
-      <table><tr><td>
-        <img src="common/help.png">
-      </td><td>&nbsp;</td><td>
-        {msg meaning="Maze.helpOneTopBlock" desc="callout - This is displayed if a user attempts to run a program composed of multiple stacks of blocks, letting them know they need to create a single stack."}On this level, you need to stack together all of the blocks in the white workspace.{/msg}
-        <div id="sampleOneTopBlock" class="readonly"></div>
-      </td></tr></table>
-    </div>
+      <div id="dialogHelpStack" class="dialogHiddenContent">
+          <table><tr><td>
+              <img src="common/help.png">
+          </td><td>&nbsp;</td><td>
+            {msg meaning="Maze.helpStack" desc="callout - The word words for 'stack' and 'blocks' should be the same as for stacking children's blocks. Use the imperative verb form appropriate for speaking to a child, gender unspecified.  If no gender-neutral singular/familiar form exists but a gender-neutral plural/formal form exists, use that instead.  Be sure to use the same translation of 'move forward' as above."}Stack a couple of 'move forward' blocks together to help me reach the goal.{/msg}
+          </td><td valign="top">
+              <img src="maze/help_stack.png" class="mirrorImg" height=63 width=136>
+          </td></tr></table>
+      </div>
+      <div id="dialogHelpOneTopBlock" class="dialogHiddenContent">
+          <table><tr><td>
+              <img src="common/help.png">
+          </td><td>&nbsp;</td><td>
+            {msg meaning="Maze.helpOneTopBlock" desc="callout - This is displayed if a user attempts to run a program composed of multiple stacks of blocks, letting them know they need to create a single stack."}On this level, you need to stack together all of the blocks in the white workspace.{/msg}
+              <div id="sampleOneTopBlock" class="readonly"></div>
+          </td></tr></table>
+      </div>
     <div id="dialogHelpRun" class="dialogHiddenContent">
       <table><tr><td>
         {msg meaning="Maze.helpRun" desc="callout - This is shown after the user has created a program on the first level."}Run your program to see what happens.{/msg}
@@ -140,7 +128,6 @@
         <div><img src="maze/help_run.png" class="mirrorImg" height=27 width=141></div>
       </td></tr></table>
     </div>
-  {elseif $ij.level == 2}
     <div id="dialogHelpReset" class="dialogHiddenContent">
       <table><tr><td>
         {msg meaning="Maze.helpReset" desc="callout - This is shown after the user has run a program that does not solve the maze."}Your program didn't solve the maze. Press 'Reset' and try again.{/msg}
@@ -150,24 +137,22 @@
         <div><img src="maze/help_run.png" class="mirrorImg" height=27 width=141></div>
       </td></tr></table>
     </div>
-  {elseif $ij.level == 3 or $ij.level == 4}
-    {if $ij.level == 3}
-      <div id="dialogHelpRepeat" class="dialogHiddenContent">
-        <table><tr><td>
-          <img src="maze/help_up.png">
-        </td><td>
-          {msg meaning="Maze.helpRepeat" desc="callout - This is shown when the 'repeat' block is introduced.  The word 'path' refers to a path through a maze, and 'block' refers to a child's building block."}Reach the end of this path using only two blocks. Use 'repeat' to run a block more than once.{/msg}
-        </td><td>
-          <img src="common/help.png">
-        </td></tr></table>
-      </div>
-    {/if}
+  {elseif $ij.level == 2}
     <div id="dialogHelpCapacity" class="dialogHiddenContent">
       <table><tr><td>
         <img src="common/help.png">
       </td><td>&nbsp;</td><td>
         {msg meaning="Maze.helpCapacity" desc="callout - This is shown after the user has used all the blocks permitted on this level."}You have used up all the blocks for this level. To create a new block, you first need to delete an existing block.{/msg}
       </td></tr></table>
+    </div>
+    <div id="dialogHelpRepeat" class="dialogHiddenContent">
+        <table><tr><td>
+            <img src="maze/help_up.png">
+        </td><td>
+          {msg meaning="Maze.helpRepeat" desc="callout - This is shown when the 'repeat' block is introduced.  The word 'path' refers to a path through a maze, and 'block' refers to a child's building block."}Reach the end of this path using only two blocks. Use 'repeat' to run a block more than once.{/msg}
+        </td><td>
+            <img src="common/help.png">
+        </td></tr></table>
     </div>
     <div id="dialogHelpRepeatMany" class="dialogHiddenContent">
       <table><tr><td>
@@ -178,17 +163,7 @@
         <img src="common/help.png">
       </td></tr></table>
     </div>
-  {elseif $ij.level == 5}
-    <div id="dialogHelpSkins" class="dialogHiddenContent">
-      <table><tr><td>
-        <img src="common/help.png">
-      </td><td width="95%">
-        {{msg meaning="Maze.helpSkins" desc="callout - This is a hint that the user can change the appearance of the player that moves within the maze."}}Choose your favourite player from this menu.{{/msg}}
-      </td><td>
-        <img src="maze/help_up.png">
-      </td></tr></table>
-    </div>
-  {elseif $ij.level == 6}
+  {elseif $ij.level == 3}
     <div id="dialogHelpIf" class="dialogHiddenContent">
       <table><tr><td>
         <img src="maze/help_up.png">
@@ -198,17 +173,7 @@
         <img src="common/help.png">
       </td></tr></table>
     </div>
-  {elseif $ij.level == 7}
-    <div id="dialogHelpMenu" class="dialogHiddenContent">
-      <table><tr><td>
-        <img src="maze/help_up.png">
-      </td><td id="helpMenuText">
-        {msg meaning="Maze.helpMenu" desc="callout - %1 will be replaced with an image of the dropdown menu that the user needs to click."}Click on %1 in the 'if' block to change its condition.{/msg}
-      </td><td>
-        <img src="common/help.png">
-      </td></tr></table>
-    </div>
-  {elseif $ij.level == 9}
+  {elseif $ij.level == 4}
     <div id="dialogHelpIfElse" class="dialogHiddenContent">
       <table><tr><td>
         <img src="maze/help_down.png">
@@ -220,7 +185,16 @@
         <img src="common/help.png">
       </td></tr></table>
     </div>
-  {elseif $ij.level == 10}
+    <div id="dialogHelpMenu" class="dialogHiddenContent">
+        <table><tr><td>
+            <img src="maze/help_up.png">
+        </td><td id="helpMenuText">
+            {msg meaning="Maze.helpMenu" desc="callout - %1 will be replaced with an image of the dropdown menu that the user needs to click."}Click on %1 in the 'if' block to change its condition.{/msg}
+        </td><td>
+            <img src="common/help.png">
+        </td></tr></table>
+    </div>
+  {elseif $ij.level == 5}
     <div id="dialogHelpWallFollow" class="dialogHiddenContent">
       <table><tr><td>
         <img src="common/help.png">
@@ -242,16 +216,20 @@
     <block type="maze_moveForward"></block>
     <block type="maze_turn"><field name="DIR">turnLeft</field></block>
     <block type="maze_turn"><field name="DIR">turnRight</field></block>
-    {if $ij.level > 2}
-      <block type="maze_forever"></block>
-      {if $ij.level == 6}
-        <block type="maze_if"><field name="DIR">isPathLeft</field></block>
-      {elseif $ij.level > 6}
-        <block type="maze_if"></block>
-        {if $ij.level > 8}
-          <block type="maze_ifElse"></block>
-        {/if}
+    {if $ij.level > 1}
+      {if $ij.level == 3}
+        <block type="maze_isPath"><field name="DIR">isPathLeft</field></block>
+      {elseif $ij.level > 3}
+        <block type="maze_isPath"></block>
       {/if}
+      <block type="maze_isFinished"></block>
+      {if $ij.level == 3}
+          <block type="maze_if"></block>
+      {elseif $ij.level > 3}
+          <block type="maze_if"></block>
+          <block type="controls_ifelse"></block>
+      {/if}
+        <block type="controls_whileUntil"><field name="MODE">UNTIL</field></block>
     {/if}
   </xml>
 {/template}
