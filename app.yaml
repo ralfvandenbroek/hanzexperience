@@ -1,4 +1,5 @@
 runtime: python27
+threadsafe: 1
 handlers:
 - url: /
   static_dir: appengine
