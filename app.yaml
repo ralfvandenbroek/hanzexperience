@@ -1,7 +1,12 @@
 runtime: python27
-threadsafe: 1
+api_version: 1
+threadsafe: true
+
 handlers:
 - url: /
-  static_files: index.html
-- url: /
-  static_dir: appengine
+  static_files: appengine/index.html
+  upload: appengine/index.html
+
+- url: /(.*)
+  static_files: appengine/\1
+  upload: appengine/(.*)
