@@ -356,7 +356,7 @@ BlocklyDialogs.abortOffer = function() {
  * Congratulates the user for completing the level and offers to
  * direct them to the next level, if available.
  */
-BlocklyDialogs.congratulations = function() {
+BlocklyDialogs.congratulations = function(maxLevel) {
     var content = document.getElementById('dialogDone');
     var style = {
         width: '40%',
@@ -364,7 +364,7 @@ BlocklyDialogs.congratulations = function() {
         top: '3em'
     };
 
-    if (BlocklyGames.LEVEL < BlocklyGames.MAX_LEVEL) {
+    if (BlocklyGames.LEVEL < BlocklyGames.MAX_LEVEL && !maxLevel) {
         var text = BlocklyGames.getMsg('Games_nextLevel')
             .replace('%1', String(BlocklyGames.LEVEL + 1));
     } else {

@@ -1,0 +1,112 @@
+{namespace Sort.soy}
+
+/**
+ * This is a Closure Template.
+ *
+ * To regenerate just English, run:
+ *   make maze-en
+ *
+ * To regenerate all languages, run:
+ *   make languages
+ */
+
+/**
+ * Translated messages for use in JavaScript.
+ */
+{template .messages}
+  {call BlocklyGames.soy.messages /}
+  <div style="display: none">
+      <span id="Sort_moveStart">move to start</span>
+      <span id="Sort_moveLeft">move left</span>
+      <span id="Sort_moveRight">move right</span>
+      <span id="Sort_moveEnd">move to end</span>
+      <span id="Sort_compareLessLeft">less than left neighbour</span>
+      <span id="Sort_compareLessRight">less than right neighbour</span>
+      <span id="Sort_compareGreaterLeft">greater than left neighbour</span>
+      <span id="Sort_compareGreaterRight">greater than right neighbour</span>
+      <span id="Sort_swapLeft">swap with left neighbour</span>
+      <span id="Sort_swapRight">swap with right neighbour</span>
+      <span id="Sort_atLeftEdge">at the left edge</span>
+      <span id="Sort_atRightEdge">at the right edge</span>
+      <span id="Sort_isSorted">list is sorted</span>
+      <span id="Sort_moveTooltip">Verandert de huidige positie in de lijst</span>
+      <span id="Sort_compareTooltip">Vergelijkt het huidige element met één van zijn buren</span>
+      <span id="Sort_swapTooltip">Verwisselt het huidige element met één van zijn buren</span>
+      <span id="Sort_atEdgeTooltip">Kijkt of de positie aan de rand van de lijst is</span>
+      <span id="Sort_isSortedTooltip">Kijkt of de lijst gesorteerd is</span>
+  </div>
+{/template}
+
+/**
+ * Web page structure.
+ */
+{template .start}
+    {call .messages /}
+    <table width="100%">
+        <tr>
+            <td>
+                <h1>
+                    {call BlocklyGames.soy.titleSpan}
+                        {param appName}
+                            Sorteren
+                        {/param}
+                    {/call}
+                </h1>
+            </td>
+        </tr>
+    </table>
+
+    <div id="visualization">
+        <div id="sortArray">
+        </div>
+    </div>
+
+    <table width="400">
+        <tr>
+            <td style="width: 190px; text-align: center; vertical-align: top;">
+            <td>
+                <button id="runButton" class="primary" title="{msg meaning="Maze.runTooltip" desc="tooltip - Pressing this button runs the computer program the user has written to move the player through the maze."}Makes the player do what the blocks say.{/msg}">
+                    <img src="common/1x1.gif" class="run icon21"> {msg meaning="Games.runProgram" desc="IBID"}Run Program{/msg}
+                </button>
+                <button id="resetButton" class="primary" style="display: none" title="{msg meaning="Maze.resetTooltip" desc="tooltip - Pressing this button restores the player to the start position and enables the user's program to be run again."}Put the player back at the start of the maze.{/msg}">
+                    <img src="common/1x1.gif" class="stop icon21"> {msg meaning="Games.resetProgram" desc="IBID"}Reset{/msg}
+                </button>
+            </td>
+        </tr>
+    </table>
+
+    {call .toolbox /}
+    <div id="blockly"></div>
+
+    {call BlocklyGames.soy.dialog /}
+    {call BlocklyGames.soy.doneDialog /}
+    {call BlocklyGames.soy.abortDialog /}
+    {call BlocklyGames.soy.storageDialog /}
+
+    <div id="dialogHelpSort" class="dialogHiddenContent">
+        <table><tr><td>
+            <img src="common/help.png">
+        </td><td>&nbsp;</td><td>
+            In deze opdracht is het de bedoeling om de lijst getallen zo te sorteren dat ze op volgorde
+            staan van laag naar hoog. Kijk of je hier een slim algoritme voor kan bedenken!
+            {call BlocklyGames.soy.ok /}
+        </td></tr></table>
+    </div>
+{/template}
+
+/**
+ * Toolbox
+ */
+{template .toolbox}
+    <xml id="toolbox" style="display: none;">
+        <block type="sort_move"><field name="DIR">-1</field></block>
+        <block type="sort_swap"></block>
+        <block type="sort_compareLess"></block>
+        <block type="sort_compareGreater"></block>
+        <block type="sort_isSorted"></block>
+        <block type="sort_atEdge"></block>
+        <block type="sort_if"></block>
+        <block type="controls_ifelse"></block>
+        <block type="controls_whileUntil"><field name="MODE">UNTIL</field></block>
+    </xml>
+{/template}

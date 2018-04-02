@@ -98,3 +98,59 @@ html[dir="RTL"] button.primary {
     background-position: -21px -21px;
 }
 
+#sortArray {
+    width: 400px;
+    height: 200px;
+    position: relative;
+}
+
+.arrayElement {
+    position: absolute;
+    top: 20px;
+    box-sizing: border-box;
+    margin-left: -20px;
+    width: 40px;
+    font-size: 20px;
+    line-height: 40px;
+    text-align: center;
+    border: 1px solid #555;
+    background-color: #ffffcc;
+    font-weight: bold;
+    transition: all .5s ease-in-out;
+}
+
+.arrayElement.large {
+    top: 10px;
+    margin-left: -30px;
+    width: 60px;
+    font-size: 30px;
+    line-height: 60px;
+}
+
+#positionMarker {
+    position: absolute;
+    width: 0px;
+    height: 0px;
+    top: 80px;
+    margin-left: -20px;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-bottom: 20px solid #555;
+    transition: all .5s ease-in-out;
+}
+
+#positionMarker:before, #positionMarker:after {
+    content: '?';
+    display: none;
+    margin-left: -30px;
+    width: 10px;
+    text-align: center;
+}
+
+#positionMarker:after {
+    margin-left: 20px;
+}
+
+#positionMarker.left:before, #positionMarker.right:after {
+    display: block;
+}
