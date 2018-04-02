@@ -2,4 +2,6 @@ runtime: python27
 threadsafe: 1
 handlers:
 - url: /
+  script: index.html
+- url: /
   static_dir: appengine
