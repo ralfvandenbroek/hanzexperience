@@ -286,9 +286,9 @@ BlocklyGames.changeLanguage = function() {
 BlocklyGames.loadFromLocalStorage = function(name, level) {
     var xml;
     try {
-        xml = window.localStorage[name + level];
+        xml = window.sessionStorage[name + level];
     } catch (e) {
-        // Firefox sometimes throws a SecurityError when accessing localStorage.
+        // Firefox sometimes throws a SecurityError when accessing sessionStorage.
         // Restarting Firefox fixes this, so it looks like a bug.
     }
     return xml;

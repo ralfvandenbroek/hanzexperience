@@ -158,11 +158,11 @@ BlocklyInterface.getWorkspace = function() {
  */
 BlocklyInterface.saveToLocalStorage = function() {
     // MSIE 11 does not support localStorage on file:// URLs.
-    if (typeof Blockly == undefined || !window.localStorage) {
+    if (typeof Blockly == undefined || !window.sessionStorage) {
         return;
     }
     var name = BlocklyGames.NAME + BlocklyGames.LEVEL;
-    window.localStorage[name] = BlocklyInterface.getCode();
+    window.sessionStorage[name] = BlocklyInterface.getCode();
 };
 
 /**

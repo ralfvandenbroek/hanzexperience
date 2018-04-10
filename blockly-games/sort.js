@@ -230,14 +230,6 @@ Sort.runButtonClick = function(e) {
         return;
     }
     BlocklyDialogs.hideDialog(false);
-    // Only allow a single top block on level 1.
-    if (BlocklyGames.LEVEL == 1 &&
-        BlocklyGames.workspace.getTopBlocks(false).length > 1 &&
-        Sort.result != Sort.ResultType.SUCCESS &&
-        !BlocklyGames.loadFromLocalStorage(BlocklyGames.NAME,
-            BlocklyGames.LEVEL)) {
-        return;
-    }
     var runButton = document.getElementById('runButton');
     var resetButton = document.getElementById('resetButton');
     // Ensure that Reset button is at least as wide as Run button.
