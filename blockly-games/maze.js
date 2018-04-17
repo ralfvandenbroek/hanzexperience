@@ -50,7 +50,7 @@ BlocklyInterface.nextLevel = function() {
 };
 
 Maze.MAX_BLOCKS = [undefined, // Level 0.
-    Infinity, 6, 8, 11, 15][BlocklyGames.LEVEL];
+    Infinity, 6, 8, 11, 11][BlocklyGames.LEVEL];
 
 // Crash type constants.
 Maze.CRASH_STOP = 1;
